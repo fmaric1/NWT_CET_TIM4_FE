@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\pages",
+    "\\src\\services"
   ],
-  "SelectedNode": "\\C:\\Users\\ASUS\\Source\\Repos\\NWT_CET_TIM4_FE",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

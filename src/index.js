@@ -15,8 +15,8 @@ ReactDOM.render(
         <Navbar />
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/appointments" element={<ProtectedRoute><Appointments /></ProtectedRoute>} />
-            <Route path="/records" element={<ProtectedRoute><Records /></ProtectedRoute>} />
+            <Route path="/appointments" element={<Appointments />} />
+            <Route path="/records" element={<Records/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
         </Routes>

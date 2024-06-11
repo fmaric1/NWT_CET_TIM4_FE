@@ -10,11 +10,27 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('/user_handler/auth/login', { email, password });
-            localStorage.setItem('token', response.data.token);
+            const response = await fetch('http://localhost:8091/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Login succesfull', data.token);
+            localStorage.setItem(token, data.token)
             navigate('/');
         } catch (error) {
-            console.error('Login failed', error);
+            console.error('Login failed: ', error);
         }
     };
 
@@ -29,3 +45,4 @@ const Login = () => {
 };
 
 export default Login;
+    

@@ -26,11 +26,28 @@ const Signup = () => {
             return; // Stop execution
         }
         try {
-            await api.post(`/user_handler/users/${role}`, { email, password, firstName, lastName, keyword });
-            navigate('/login');
+            const response = await fetch('http://localhost:8091/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    firstName,
+                    lastName
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('User signed up successfully:', data);
+            navigate('/login')
         } catch (error) {
-            console.error('Signup failed', error);
-            // Handle error
+            console.error('Error signing up user:', error);
         }
     };
 
