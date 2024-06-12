@@ -40,7 +40,7 @@ const Signup = () => {
         }
         try {
             if (isDoctor) {
-                const response = await fetch('http://localhost:8091/auth/signup/dentist', {
+                const response = await fetch('http://34.207.120.163:8092/auth/signup/dentist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ const Signup = () => {
             }
             else {
 
-                const response = await fetch('http://localhost:8091/auth/signup/patient', {
+                const response = await fetch('http://34.207.120.163:8092/auth/signup/patient', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
