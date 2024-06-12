@@ -1,0 +1,71 @@
+.homepage {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.welcome {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #e0f7fa;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+    .welcome h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .welcome p {
+        font-size: 1.2em;
+    }
+
+.services, .testimonials, .contact {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+    .services h2, .testimonials h2, .contact h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #00796b;
+    }
+
+.services-container, .testimonials-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-item, .testimonial-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+}
+
+    .service-item h3, .testimonial-item p {
+        margin-bottom: 10px;
+    }
+
+.contact-info {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #00796b;
+    color: #ffffff;
+    border-top: 1px solid #ddd;
+}

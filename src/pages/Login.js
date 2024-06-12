@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './login.css'; // Ensure this is correctly named and imported
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -26,23 +29,39 @@ const Login = () => {
             }
 
             const data = await response.json();
-            console.log('Login succesfull', data.token);
-            localStorage.setItem(token, data.token)
+            console.log('Login successful', data.token);
+            localStorage.setItem('token', data.token)
             navigate('/');
+            window.location.reload();
+            toast.success("Welcome. Login Successful");
         } catch (error) {
             console.error('Login failed: ', error);
+            setErrorMessage('Login failed. Please check your credentials and try again.');
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
             <h2>Login</h2>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-            <button type="submit">Login</button>
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                className="form-input"
+            />
+            <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                className="form-input"
+            />
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <button type="submit" className="form-button">Login</button>
+            <ToastContainer />
         </form>
     );
 };
 
 export default Login;
-    

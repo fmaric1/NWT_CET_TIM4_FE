@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from "react-datepicker";
-
+import './signup.css';
 import "react-datepicker/dist/react-datepicker.css";
 
 const Signup = () => {
@@ -96,7 +96,7 @@ const Signup = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="signup-form">
             <h2>Signup</h2>
 
             <input
@@ -104,87 +104,86 @@ const Signup = () => {
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 placeholder="First Name"
+                className="form-input"
             />
             <input
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder="Last Name"
+                className="form-input"
             />
             <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
+                className="form-input"
             />
             <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
+                className="form-input"
             />
 
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <select value={role} onChange={(e) => setRole(e.target.value)} className="form-select">
                 <option value="patient">Patient</option>
                 <option value="dentist">Dentist</option>
             </select>
 
             {role === 'dentist' && (
-                <input
-                    type="text"
-                    value={keyword}
-                    onChange={(e) => setKeyword(e.target.value)}
-                    placeholder="Keyword"
-                />)}
-           
-            <br></br>
-            {role === 'dentist' && (
-                <input
-                    type="text"
-                    value={workingHours}
-                    onChange={(e) => setWorkingHours(e.target.value)}
-                    placeholder="Working Hours"
-                />
-
-            )}
-            {role === 'patient' && (
-                <DatePicker selected={birthDate} onChange={(date) => setBirthDate(date)} />
-
+                <>
+                    <input
+                        type="text"
+                        value={keyword}
+                        onChange={(e) => setKeyword(e.target.value)}
+                        placeholder="Keyword"
+                        className="form-input"
+                    />
+                    <input
+                        type="text"
+                        value={workingHours}
+                        onChange={(e) => setWorkingHours(e.target.value)}
+                        placeholder="Working Hours"
+                        className="form-input"
+                    />
+                </>
             )}
 
             {role === 'patient' && (
-                <input
-                    type="text"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="Phone Number"
-                />
-
+                <>
+                    <DatePicker
+                        selected={birthDate}
+                        onChange={(date) => setBirthDate(date)}
+                        className="form-datepicker"
+                        placeholderText="Birth Date"
+                    />
+                    <input
+                        type="text"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Phone Number"
+                        className="form-input"
+                    />
+                    <input
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="Address"
+                        className="form-input"
+                    />
+                    <select value={gender} onChange={(e) => setGender(e.target.value)} className="form-select">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </>
             )}
 
-            
-            {role === 'patient' && (
-                <input
-                    type="text"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    placeholder="Address"
-                />
-
-            )}
-            {role === 'patient' && (
-                <select value={gender} onChange={(e) => setGender(e.target.value)}>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-
-            )}
-
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-            <br></br>
-            <button type="submit">Signup</button>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <button type="submit" className="form-button">Signup</button>
         </form>
     );
 };
-
 export default Signup;
