@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import './signup.css';
@@ -40,7 +39,7 @@ const Signup = () => {
         }
         try {
             if (isDoctor) {
-                const response = await fetch('http://34.207.120.163:8092/auth/signup/dentist', {
+                const response = await fetch('/auth/signup/dentist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -63,7 +62,7 @@ const Signup = () => {
             }
             else {
 
-                const response = await fetch('http://34.207.120.163:8092/auth/signup/patient', {
+                const response = await fetch('/auth/signup/patient', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
